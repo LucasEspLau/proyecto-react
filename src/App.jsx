@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Inicio from './pages/inicio';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Catalogo from './pages/Catalogo/Catalogo';
 import CrearProducto from './pages/Catalogo/Crear';
+import Catalogo from './pages/Catalogo/Catalogo';
 
 function App() {
   return (

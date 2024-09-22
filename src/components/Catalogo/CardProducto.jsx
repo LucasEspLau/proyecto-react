@@ -1,4 +1,20 @@
-export function CardProducto({ producto }) {
+export function CardProducto({ producto,actualizarLista }) {
+      // Eliminar un producto
+    const handleDeleteProducto = (productId) => {
+        console.log("PRODUCTO ID ",productId)
+        fetch(`https://servidor-qt8f.onrender.com/api/products/${productId}`, {
+        method: 'DELETE',
+        })
+        .then((response) => {
+            if (response.ok) {
+                //setProductos((prev) => prev.filter((prod) => prod.id !== productId));
+                actualizarLista(productId)
+            } else {
+            console.error('Error al eliminar el producto');
+            }
+        })
+        .catch((error) => console.error('Error al eliminar el producto:', error));
+    };
     return (
         <div style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px', width: '200px', margin: '10px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
             <h2 style={{ fontSize: '18px', fontWeight: 'bold', color: '#333', marginBottom: '8px' }}>
@@ -18,6 +34,9 @@ export function CardProducto({ producto }) {
             </p>
 
             <img width={100} src={producto.img} alt={producto.name} style={{ borderRadius: '4px', objectFit: 'cover' }} />
+            
+            <button onClick={() => handleDeleteProducto(producto.id)}>Eliminar</button>
+
         </div>
     );
 }

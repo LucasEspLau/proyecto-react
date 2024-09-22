@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CrearProducto(){
     const [formData, setFormData] = useState({
@@ -17,6 +17,7 @@ export default function CrearProducto(){
 
         // Crear un nuevo producto
     const handleCreateProduct = () => {
+        console.log(formData)
         fetch('https://servidor-qt8f.onrender.com/api/product-create', {
         method: 'POST',
         headers: {
@@ -31,50 +32,61 @@ export default function CrearProducto(){
         })
         .catch((error) => console.error('Error al crear el producto:', error));
     };
+
+      // Restablecer el formulario
+    const resetForm = () => {
+        setFormData({ nombre: '', descripcion: '', img: '', precio: '', stock: '' });
+    };
+    useEffect(()=>{
+        console.log("Input cambiado")
+    },[formData])
     return(
         <main style={{minHeight:'80vh'}}>
             <h1 style={{margin:0}}>Crear de Producto</h1>
-            <form >
-            <input
-                type="text"
-                name="nombre"
-                value={formData.nombre}
-                onChange={handleInputChange}
-                placeholder="Nombre del producto"
-                />
-            <input
-                type="text"
-                name="descripcion"
-                value={formData.descripcion}
-                onChange={handleInputChange}
-                placeholder="Descripción del producto"
-                />
-            <input
-                type="text"
-                name="img"
-                value={formData.img}
-                onChange={handleInputChange}
-                placeholder="URL de la imagen"
-                />
-            <input
-                type="number"
-                name="precio"
-                value={formData.precio}
-                onChange={handleInputChange}
-                placeholder="Precio del producto"
-                />
-            <input
-                type="number"
-                name="stock"
-                value={formData.stock}
-                onChange={handleInputChange}
-                placeholder="Stock del producto"
-                />
-            <button onClick={handleCreateProduct}>
-                Crear Producto
-            </button>
+            <div style={{display:'flex',justifyContent:'center'}}>
+                <form style={{display:'flex',flexDirection:'column',maxWidth:'50vh',gap:10}}>
+                    <input
+                        type="text"
+                        name="nombre"
+                        value={formData.nombre}
+                        onChange={handleInputChange}
+                        placeholder="Nombre del producto"
+                        />
+                    <input
+                        type="text"
+                        name="descripcion"
+                        value={formData.descripcion}
+                        onChange={handleInputChange}
+                        placeholder="Descripción del producto"
+                        />
+                    <input
+                        type="text"
+                        name="img"
+                        value={formData.img}
+                        onChange={handleInputChange}
+                        placeholder="URL de la imagen"
+                        />
+                    <input
+                        type="number"
+                        name="precio"
+                        value={formData.precio}
+                        onChange={handleInputChange}
+                        placeholder="Precio del producto"
+                        />
+                    <input
+                        type="number"
+                        name="stock"
+                        value={formData.stock}
+                        onChange={handleInputChange}
+                        placeholder="Stock del producto"
+                        />
+                    <button onClick={handleCreateProduct}>
+                        Crear Producto
+                    </button>
 
-            </form>
+                </form>
+            </div>
+
         </main>
     )
 }
