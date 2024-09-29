@@ -50,12 +50,15 @@ export default function Catalogo() {
     };
   }, []);
 
-  // Fetch de productos cuando se monta el componente
-  useEffect(() => {
+  const getProductos=()=>{
     fetch("https://servidor-qt8f.onrender.com/api/products")
       .then((response) => response.json())
       .then((data) => setProductos(data))
       .catch((error) => console.error("Error al cargar productos:", error));
+  }
+  // Fetch de productos cuando se monta el componente
+  useEffect(() => {
+    getProductos()
   }, []);
 
 
@@ -70,15 +73,10 @@ export default function Catalogo() {
         Catálogo de Productos
       </h1>
 
-      <div
-        style={{
-          display: "grid",
-          gap: "20px",
-          gridTemplateColumns: columnas, // Usamos el estado para definir columnas
-        }}
-      >
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
         {productos.map((producto) => (
-          <CardProducto key={producto.id} producto={producto} actualizarLista={actualizarLista}/>
+          <CardProducto key={producto.id} producto={producto} actualizarLista={actualizarLista} obtenerProductos={getProductos}/>
         ))}
       </div>
     </main>

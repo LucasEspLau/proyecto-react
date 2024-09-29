@@ -28,7 +28,6 @@ export default function CrearProducto(){
         })
         .then((response) => response.json())
         .then((newProduct) => {
-            setProducts((prev) => [...prev, newProduct]);
             resetForm();
         })
         .catch((error) => console.error('Error al crear el producto:', error));
