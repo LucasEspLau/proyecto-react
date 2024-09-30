@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+    const perfil={
+        id:1,
+        name:"lucas",
+        auth:null
+    }
+
+
     return (
         <nav className="min-h-[10vh] max-h-[10vh] flex flex-row justify-between items-center bg-white px-6 shadow-md">
             <Link to="/" className="text-2xl font-bold text-black hover:text-blue-700 transition-colors">
@@ -24,12 +31,25 @@ export default function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link
+                {
+                    perfil.auth ? (
+                        <Link
                         to="#contact"
                         className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
-                    >
-                        Contacto
-                    </Link>
+                        >
+                        Cerrar Sesión
+                        </Link>
+                    ) : (
+                        <Link
+                        to="#contact"
+                        className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
+                        >
+                        Iniciar Sesión
+                        </Link>
+                    )
+                }
+
+
                 </li>
             </ul>
         </nav>

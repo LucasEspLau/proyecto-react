@@ -24,6 +24,11 @@ const listaProductos = [
   },
 ];
 
+const perfil={
+  id:1,
+  name:"lucas",
+  auth:true
+}
 export default function Catalogo() {
   const [productos, setProductos] = useState(listaProductos);
   const [columnas, setColumnas] = useState('repeat(1, 1fr)');
