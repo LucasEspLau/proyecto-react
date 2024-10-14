@@ -7,7 +7,7 @@ export function CardProducto({ producto, actualizarLista,obtenerProductos }) {
     // Eliminar un producto
     const handleDeleteProducto = (productId) => {
         console.log("PRODUCTO ID ", productId);
-        fetch(`https://servidor-qt8f.onrender.com/api/products/${productId}`, {
+        fetch(`https://servidor-2-uok1.onrender.com/api/products/${productId}`, {
             method: 'DELETE',
         })
         .then((response) => {
@@ -85,7 +85,7 @@ function ModalEdit({ producto, closeModal, actualizarLista,obtenerProductos }) {
         e.preventDefault();
 
         // Aquí puedes realizar la lógica de actualización del producto.
-        fetch(`https://servidor-qt8f.onrender.com/api/products/${producto.id}`, {
+        fetch(`https://servidor-2-uok1.onrender.com/api/products/${producto.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

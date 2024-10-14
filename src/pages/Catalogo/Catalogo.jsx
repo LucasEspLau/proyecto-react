@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CardProducto } from "../../components/Catalogo/CardProducto";
+import { useSelector } from "react-redux";
 
 const listaProductos = [
   {
@@ -56,7 +57,7 @@ export default function Catalogo() {
   }, []);
 
   const getProductos=()=>{
-    fetch("https://servidor-qt8f.onrender.com/api/products")
+    fetch("https://servidor-2-uok1.onrender.com/api/products")
       .then((response) => response.json())
       .then((data) => setProductos(data))
       .catch((error) => console.error("Error al cargar productos:", error));
@@ -71,13 +72,14 @@ export default function Catalogo() {
   function actualizarLista(productId){
     setProductos((prev) => prev.filter((prod) => prod.id !== productId));
   }
-
+  const user = useSelector((state) => state.user.userInfo);
+  console.log(user)
   return (
     <main style={{ minHeight: "80vh", padding: "20px" }}>
       <h1 style={{ margin: "0 0 20px 0", textAlign: "center" }}>
         Catálogo de Productos
       </h1>
-
+    
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
         {productos.map((producto) => (

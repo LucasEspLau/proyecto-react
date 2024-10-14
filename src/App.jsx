@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CrearProducto from './pages/Catalogo/Crear';
 import Catalogo from './pages/Catalogo/Catalogo';
+import Registro from './pages/Registro/Registro';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
@@ -17,27 +19,14 @@ function App() {
         <Route path='/' element={<Inicio/>}/>
         <Route path='/catalogo' element={<Catalogo/>}/>
         <Route path='/crear-producto' element={<CrearProducto/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/registrarse' element={<Registro/>}/>
+
 
       </Routes>
       <Footer/>
 
       </>
-      {/*
-      <div className="App">
-        <Navbar />
-      
-      <header className='header'>
-        <h1>Bienvenido a ALfresco</h1>
-        <p>Descubre el maravillo mundo de los útiles</p>
-      </header>
-      
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-      </Routes>
-
-      <Footer />
-      </div>*/}
     </Router>
   );
 }

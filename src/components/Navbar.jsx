@@ -30,27 +30,45 @@ export default function Navbar() {
                         Catálogo
                     </Link>
                 </li>
-                <li>
+    
                 {
                     perfil.auth ? (
-                        <Link
-                        to="#contact"
-                        className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
-                        >
-                        Cerrar Sesión
-                        </Link>
+                        <li>
+
+                            <Link
+                                to="#contact"
+                                className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
+                                >
+                                Cerrar Sesión
+                            </Link>
+                        </li>
+
                     ) : (
-                        <Link
-                        to="#contact"
-                        className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
-                        >
-                        Iniciar Sesión
-                        </Link>
+                        <>
+                        <li>
+                            <Link
+                                to="/registrarse"
+                                className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
+                            >
+                                Registrarse
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/login"
+                                className="text-lg text-blue-500 hover:text-blue-600 transition-colors"
+                            >
+                                Iniciar Sesión
+                            </Link>
+
+                        </li>
+
+                        </>
+
                     )
                 }
 
 
-                </li>
             </ul>
         </nav>
     );
